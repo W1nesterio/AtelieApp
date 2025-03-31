@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Atelie"
         mc:Ignorable="d"
-        Title="Showcase" Height="450" Width="800">
+        Title="Showcase" Height="800" Width="1280"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         
     </Grid>

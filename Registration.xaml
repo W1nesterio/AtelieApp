@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Atelie"
         mc:Ignorable="d"
-        Title="Registration" Height="320" Width="370">
+        Title="Registration" Height="320" Width="370"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Регистрация" HorizontalAlignment="Center" Margin="0,12,0,0" VerticalAlignment="Top" FontSize="20"/>
 
