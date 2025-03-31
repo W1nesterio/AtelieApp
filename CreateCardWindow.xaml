@@ -1,0 +1,36 @@
+﻿<Window x:Class="Atelie.CreateCardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Atelie"
+        mc:Ignorable="d"
+        Title="Create Card" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Field -->
+        <TextBlock Text="Название" FontSize="16" Margin="0,0,0,5"/>
+        <TextBox Name="TitleTextBox" FontSize="14" Padding="5" Grid.Row="1" Height="35"/>
+
+        <!-- Price Field -->
+        <TextBlock Text="Цена" FontSize="16" Margin="0,20,0,5" Grid.Row="2"/>
+        <TextBox Name="PriceTextBox" FontSize="14" Padding="5" Grid.Row="3" Height="35"/>
+
+        <!-- Description Field -->
+        <TextBlock Text="Описание" FontSize="16" Margin="0,20,0,5" Grid.Row="4"/>
+        <TextBox Name="DescriptionTextBox" FontSize="14" Padding="5" Grid.Row="5" Height="100" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+
+        <!-- Image Button -->
+        <Button Name="AddImageButton" Content="Добавить картинку" FontSize="14" Width="200" Height="35" Grid.Row="4" Margin="13,188,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="AddImageButton_Click"/>
+
+        <!-- Add Button -->
+        <Button Name="AddCardButton" Content="Добавить" FontSize="14" Width="242" Height="43" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#4CAF50" Foreground="White" BorderBrush="Transparent" Click="AddCardButton_Click" RenderTransformOrigin="0.476,2.184" Margin="274,189,0,0"/>
+    </Grid>
+</Window>

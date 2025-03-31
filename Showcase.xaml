@@ -5,9 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Atelie"
         mc:Ignorable="d"
-        Title="Showcase" Height="800" Width="1280"
-        WindowStartupLocation="CenterScreen">
+        Title="Showcase" Height="600" Width="800">
+
     <Grid>
-        
+        <!-- Кнопка для открытия окна добавления карточки товара -->
+        <Button Content="Добавить карточку"
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Width="150" Height="40" Margin="10" 
+                Click="AddCardButton_Click"
+                Background="#4CAF50" Foreground="White" BorderBrush="Transparent" BorderThickness="1"/>
+
+        <!-- ScrollViewer для отображения карточек товаров -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                      Margin="10,60,10,10">
+            <!-- Уменьшаем размеры панели для карточек -->
+            <StackPanel x:Name="CardStackPanel" Orientation="Vertical" VerticalAlignment="Top"
+                        MaxWidth="750" Margin="0,0,0,0"/>
+        </ScrollViewer>
     </Grid>
 </Window>
