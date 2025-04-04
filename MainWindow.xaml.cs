@@ -53,7 +53,7 @@ namespace Atelie
 
                     if (dbPassword == hashedPassword)
                     {
-                        Showcase showcaseWindow = new Showcase();
+                        AtelieWindow showcaseWindow = new AtelieWindow();
                         showcaseWindow.Show();
                         this.Close();
                     }

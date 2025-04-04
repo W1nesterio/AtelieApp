@@ -1,0 +1,51 @@
+﻿<Window x:Class="Atelie.CreateCards"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Создание карточки" Height="600" Width="700" Background="#F4F4F4" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border Background="White" CornerRadius="10" Padding="30" Margin="20">
+            <StackPanel>
+                <TextBlock Text="Создание карточки" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+
+                <!-- Название -->
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Название:" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TitleBox" Height="35" Padding="5" FontSize="14"/>
+                    <TextBlock Text="Введите название" Foreground="Red" x:Name="TitleWarning" Visibility="Collapsed"/>
+                </StackPanel>
+
+                <!-- Цена -->
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Цена:" FontWeight="SemiBold"/>
+                    <TextBox x:Name="PriceBox" Height="35" Padding="5" FontSize="14"/>
+                    <TextBlock Text="Введите цену" Foreground="Red" x:Name="PriceWarning" Visibility="Collapsed"/>
+                </StackPanel>
+
+                <!-- Описание -->
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Описание:" FontWeight="SemiBold"/>
+                    <TextBox x:Name="DescriptionBox" Height="100" Padding="5" TextWrapping="Wrap" AcceptsReturn="True" MaxLength="300" FontSize="14"/>
+                    <DockPanel>
+                        <TextBlock Text="Введите описание" Foreground="Red" x:Name="DescWarning" Visibility="Collapsed" DockPanel.Dock="Left"/>
+                        <TextBlock x:Name="CharCount" Text="0/300" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </StackPanel>
+
+                <!-- Картинка -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,10">
+                    <Button Content="Добавить картинку" Click="AddImage_Click" Width="160" Height="35" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="ImagePathBlock" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Width="400"/>
+                </StackPanel>
+
+                <!-- Кнопка добавления -->
+                <Button Content="Добавить" Click="AddCard_Click" Width="150" Height="40" 
+                        HorizontalAlignment="Center" Background="#4CAF50" Foreground="White"
+                        FontWeight="Bold" BorderThickness="0" Cursor="Hand" Margin="0,20,0,0">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.5"/>
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

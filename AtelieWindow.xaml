@@ -1,0 +1,41 @@
+﻿<Window x:Class="Atelie.AtelieWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Atelie"
+        mc:Ignorable="d"
+        Title="AtelieWindow" Height="1080" Width="1440"
+        WindowStartupLocation="CenterOwner">
+    <Grid Background="#F5F5F5">
+        <!-- Заголовок с названием -->
+        <Label Content="AtelieXUXA" HorizontalAlignment="Left" VerticalAlignment="Top" 
+               FontSize="48" FontWeight="Bold" FontFamily="Arial" Foreground="#2C3E50" 
+               Margin="137,27,0,0" Height="60" Width="600" />
+
+        <!-- Поле для поиска -->
+        <TextBox Name="SearchTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" 
+         Width="1026" Height="45" Margin="153,105,0,0" FontSize="16" 
+         Padding="10,0" VerticalContentAlignment="Center" 
+         TextChanged="SearchTextBox_TextChanged"/>
+
+        <!-- Изображение (картинка с костюмом) -->
+        <Image Margin="1,-6,0,0" Source="/icons8-костюм-100.png" Stretch="Fill" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Height="123"/>
+
+        <!-- ScrollViewer для прокрутки карточек -->
+        <ScrollViewer Margin="69,180,50,50" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <WrapPanel Name="CardsWrapPanel" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </ScrollViewer>
+
+        <!-- Кнопка перехода на форму CreateCards -->
+        <Button Name="AddCardButton" Content="Добавить карточку" HorizontalAlignment="Left" 
+                VerticalAlignment="Top" Width="200" Height="45" Margin="1209,108,0,0" 
+                FontSize="16" Background="#27AE60" Foreground="White" BorderBrush="#2ECC71" 
+                BorderThickness="1" Click="AddCardButton_Click"/>
+        <Button Name="AddMaterialButton" Content="Добавить материал" HorizontalAlignment="Left" 
+        VerticalAlignment="Top" Width="200" Height="45" Margin="1209,34,0,0" 
+        FontSize="16" Background="#27AE60" Foreground="White" BorderBrush="#2ECC71" 
+        BorderThickness="1" Click="AddMaterialButton_Click"/>
+    </Grid>
+</Window>

@@ -107,16 +107,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CreateCardWindow.xaml.cs">
-      <DependentUpon>CreateCardWindow.xaml</DependentUpon>
+    <Compile Include="AtelieWindow.xaml.cs">
+      <DependentUpon>AtelieWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCards.xaml.cs">
+      <DependentUpon>CreateCards.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditCard.xaml.cs">
+      <DependentUpon>EditCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EnterMaterial.xaml.cs">
+      <DependentUpon>EnterMaterial.xaml</DependentUpon>
     </Compile>
     <Compile Include="Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Showcase.xaml.cs">
-      <DependentUpon>Showcase.xaml</DependentUpon>
-    </Compile>
-    <Page Include="CreateCardWindow.xaml">
+    <Page Include="AtelieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateCards.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EnterMaterial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,10 +151,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Registration.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Showcase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-костюм-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
