@@ -110,6 +110,12 @@
     <Compile Include="AtelieWindow.xaml.cs">
       <DependentUpon>AtelieWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AtelieWindowForUsers.xaml.cs">
+      <DependentUpon>AtelieWindowForUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CartWindow.xaml.cs">
+      <DependentUpon>CartWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreateCards.xaml.cs">
       <DependentUpon>CreateCards.xaml</DependentUpon>
     </Compile>
@@ -123,6 +129,14 @@
       <DependentUpon>Registration.xaml</DependentUpon>
     </Compile>
     <Page Include="AtelieWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AtelieWindowForUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CartWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,6 +198,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons8-костюм-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-оформить-заказ-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-вниз-влево-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

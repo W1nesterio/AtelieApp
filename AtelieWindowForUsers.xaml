@@ -1,0 +1,39 @@
+﻿<Window x:Class="Atelie.AtelieWindowForUsers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Atelie"
+        mc:Ignorable="d"
+        Title="AtelieWindow" Height="1080" Width="1480"
+        WindowStartupLocation="CenterOwner">
+    <Grid Background="#F5F5F5">
+        <!-- Заголовок с названием -->
+        <Label Content="AtelieXUXA" HorizontalAlignment="Left" VerticalAlignment="Top" 
+               FontSize="48" FontWeight="Bold" FontFamily="Arial" Foreground="#2C3E50" 
+               Margin="137,27,0,0" Height="60" Width="294" />
+
+        <!-- Поле для поиска (без обработчика события TextChanged) -->
+        <TextBox Name="SearchTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                 Width="1289" Height="45" Margin="153,105,0,0" FontSize="16" 
+                 Padding="10,0" VerticalContentAlignment="Center"/>
+
+        <!-- Изображение (картинка с костюмом) -->
+        <Image Margin="1,-6,0,0" Source="/icons8-костюм-100.png" Stretch="Fill" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Height="123"/>
+
+        <!-- ScrollViewer для прокрутки карточек -->
+        <ScrollViewer Margin="69,180,50,50" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <WrapPanel Name="CardsWrapPanel" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </ScrollViewer>
+
+        <!-- Кнопка, которая пока не используется -->
+        <Button Content="Добавить реквизиты" HorizontalAlignment="Left" Margin="1100,31,0,0" VerticalAlignment="Top" Height="48" Width="201"/>
+
+        <!-- Изображение корзины с эффектом при наведении (с обработчиком события MouseDown) -->
+        <Image Margin="1341,1,0,0" Source="/icons8-оформить-заказ-100.png" Stretch="Fill" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" Width="131" Height="110" 
+               MouseDown="CartImage_MouseDown"/>
+        <Button Content="Подарочные карты" HorizontalAlignment="Left" Margin="877,32,0,0" VerticalAlignment="Top" Height="48" Width="201"/>
+    </Grid>
+</Window>
