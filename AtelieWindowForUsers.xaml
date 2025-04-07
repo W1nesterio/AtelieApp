@@ -28,12 +28,14 @@
         </ScrollViewer>
 
         <!-- Кнопка, которая пока не используется -->
-        <Button Content="Добавить реквизиты" HorizontalAlignment="Left" Margin="1100,31,0,0" VerticalAlignment="Top" Height="48" Width="201"/>
+        <Button Content="Реквизиты" HorizontalAlignment="Left" VerticalAlignment="Top" Height="48" Width="201" Click="ViewCardDetailsButton_Click" Margin="1098,32,0,0"/>
+
 
         <!-- Изображение корзины с эффектом при наведении (с обработчиком события MouseDown) -->
         <Image Margin="1341,1,0,0" Source="/icons8-оформить-заказ-100.png" Stretch="Fill" 
                HorizontalAlignment="Left" VerticalAlignment="Top" Width="131" Height="110" 
                MouseDown="CartImage_MouseDown"/>
         <Button Content="Подарочные карты" HorizontalAlignment="Left" Margin="877,32,0,0" VerticalAlignment="Top" Height="48" Width="201"/>
+        <Button Content="Наши услуги" HorizontalAlignment="Left" Margin="649,32,0,0" VerticalAlignment="Top" Height="48" Width="201"/>
     </Grid>
 </Window>

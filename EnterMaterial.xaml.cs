@@ -34,7 +34,7 @@ namespace Atelie
                         materials.Add(new Material
                         {
                             MaterialName = reader.GetString("MaterialName"),
-                            ImagePath = reader.GetString("ImagePath")
+                          
                         });
                     }
 
@@ -84,12 +84,16 @@ namespace Atelie
 
                 MessageBox.Show("Материал добавлен успешно.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadMaterials();  // Перезагружаем список материалов
+
+                // Очищаем поле ввода текста после добавления материала
+                MaterialNameTextBox.Clear();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при добавлении материала: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
         // Класс для представления материала
         public class Material

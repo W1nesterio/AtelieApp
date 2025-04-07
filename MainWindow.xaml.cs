@@ -8,7 +8,7 @@ namespace Atelie
 {
     public partial class MainWindow : Window
     {
-        private readonly string connectionString = "Server=localhost;Database=Atelie;Uid=root;Pwd=root;"; 
+        private readonly string connectionString = "Server=localhost;Database=Atelie;Uid=root;Pwd=root;";
 
         public MainWindow()
         {
@@ -49,12 +49,23 @@ namespace Atelie
                         return;
                     }
 
-                    string hashedPassword = HashPassword(password);
+                    string hashedPassword = HashPassword(password);  // Хешируем введённый пароль
 
+                    // Проверяем, совпадает ли пароль с тем, что хранится в базе
                     if (dbPassword == hashedPassword)
                     {
-                        AtelieWindow showcaseWindow = new AtelieWindow();
-                        showcaseWindow.Show();
+                        // Проверка на конкретного пользователя Xuxa с паролем meow1234
+                        if (username == "Xuxa" && dbPassword == "POS5+sUZo1Cb7L0VhwmvhlFzikkBIi13fVVmvT3MwwY=")
+                        {
+                            AtelieWindow showcaseWindow = new AtelieWindow();
+                            showcaseWindow.Show();
+                        }
+                        else
+                        {
+                            AtelieWindowForUsers userWindow = new AtelieWindowForUsers(username);
+                            userWindow.Show();
+                        }
+
                         this.Close();
                     }
                     else
@@ -64,6 +75,7 @@ namespace Atelie
                 }
             }
         }
+
 
         private string HashPassword(string password)
         {

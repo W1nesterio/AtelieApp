@@ -244,5 +244,11 @@ namespace Atelie
                 Content = panel;
             }
         }
+        private void ViewCardDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            CardDetailsWindow cardDetailsWindow = new CardDetailsWindow(currentUsername); 
+            cardDetailsWindow.Show();
+        }
+
     }
 }

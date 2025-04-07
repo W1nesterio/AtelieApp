@@ -1,0 +1,65 @@
+﻿<Window x:Class="Atelie.CardDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Реквизиты карты" Height="373" Width="318" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!-- Стиль для кнопок -->
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#3498db"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+
+        <!-- Стиль для текстовых блоков -->
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,10,0,5"/>
+        </Style>
+
+        <!-- Стиль для полей ввода -->
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Height" Value="40"/>
+            <!-- Увеличена высота -->
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="BorderBrush" Value="#3498db"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <!-- Цвет текста -->
+            <Setter Property="Background" Value="White"/>
+            <!-- Цвет фона -->
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <!-- Центрирование текста по вертикали -->
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20,20,20,-13">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Height="314" Width="248">
+            <!-- Заголовок -->
+            <TextBlock Text="Реквизиты карты" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#2c3e50"/>
+
+            <!-- Номер карты -->
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="Номер карты:"/>
+            <TextBox x:Name="CardNumberTextBox" MaxLength="19" Style="{StaticResource TextBoxStyle}" IsReadOnly="True" Height="39" Width="241" TextChanged="CardNumberTextBox_TextChanged"/>
+
+            <!-- Дата окончания -->
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="Дата до (мм/гг):"/>
+            <TextBox x:Name="ExpiryDateTextBox" Style="{StaticResource TextBoxStyle}" IsReadOnly="True" Width="241"/>
+
+            <!-- Имя держателя -->
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="Имя держателя:"/>
+            <TextBox x:Name="CardHolderNameTextBox" Style="{StaticResource TextBoxStyle}" IsReadOnly="True" Height="38" Width="240"/>
+
+            <!-- Кнопка для сохранения / отвязки карты (с отступом) -->
+            <Button x:Name="SaveCardDetailsButton" Content="Сохранить" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Center" Margin="0,20,0,0" Click="SaveCardDetailsButton_Click" Width="130" />
+        </StackPanel>
+        <Image Margin="203,55,15,231" Source="/icons8-банковская-карта-48.png" Stretch="Fill"/>
+    </Grid>
+</Window>

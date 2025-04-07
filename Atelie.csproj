@@ -113,6 +113,9 @@
     <Compile Include="AtelieWindowForUsers.xaml.cs">
       <DependentUpon>AtelieWindowForUsers.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CardDetailsWindow.xaml.cs">
+      <DependentUpon>CardDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CartWindow.xaml.cs">
       <DependentUpon>CartWindow.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AtelieWindowForUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CardDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -187,6 +194,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -204,6 +212,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icons8-вниз-влево-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-банковская-карта-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

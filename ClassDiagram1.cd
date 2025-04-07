@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Atelie.AtelieWindow" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAwYQAAAAAAgAAAgAAAgBEAQBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AtelieWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Atelie.Card">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAgAEAAAAAAAIAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>AtelieWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Atelie.CardControl">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAACAAAAAAAAAEAAAAAAAAAEBAAAAAAAA=</HashCode>
+      <FileName>AtelieWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Atelie.CartWindow">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>CartWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Atelie.CartItem">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAEAAAAAAAIAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>CartWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Atelie.CreateCards">
+    <Position X="3.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAgAgAABAAAAAAAAQAAAAAAABAAAAAA=</HashCode>
+      <FileName>CreateCards.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Atelie.EditCard">
+    <Position X="2" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>EditCard.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Atelie.EnterMaterial">
+    <Position X="5" Y="2.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Atelie.EnterMaterial.Material" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>EnterMaterial.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQAEAAAAAAAAAAgAAAAAAAAAAAQAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>EnterMaterial.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Atelie.MainWindow">
+    <Position X="6.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAgAAAAAAAAAAAAAAAAAAACAAAACAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Atelie.Registration">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAgAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Registration.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
