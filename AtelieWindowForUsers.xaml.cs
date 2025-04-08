@@ -149,6 +149,7 @@ namespace Atelie
         }
 
         // Метод для добавления карточки в корзину
+        // Метод для добавления товара в корзину
         private void AddToCart(Card card)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -187,10 +188,11 @@ namespace Atelie
             }
         }
 
+
         // Обработчик для перехода на CartWindow при нажатии на корзину
         private void CartImage_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            CartWindow cartWindow = new CartWindow();
+            CartWindow cartWindow = new CartWindow(currentUsername);
             cartWindow.Show();
         }
 
@@ -249,6 +251,16 @@ namespace Atelie
             CardDetailsWindow cardDetailsWindow = new CardDetailsWindow(currentUsername); 
             cardDetailsWindow.Show();
         }
+        private void PromoButton_Click(object sender, RoutedEventArgs e)
+        {
+            MeasurementWindow measurementWindow = new MeasurementWindow();
+            measurementWindow.Show();
+        }
 
+        private void MeasurementButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreatePromo promoWindow = new CreatePromo();
+            promoWindow.Show();
+        }
     }
 }

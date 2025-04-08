@@ -5,20 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Atelie"
         mc:Ignorable="d"
-        Title="MainWindow" Height="320" Width="370"
+        Title="MainWindow" Height="363" Width="591"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <TextBox Name="usernameTextBox" HorizontalAlignment="Left" Margin="60,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Height="22"/>
-        <Label Content="Добро пожаловать" HorizontalAlignment="Left" Margin="94,15,0,0" VerticalAlignment="Top" Height="40" Width="193" FontSize="20"/>
-        <PasswordBox Name="passwordTextBox" HorizontalAlignment="Left" Margin="60,174,0,0" VerticalAlignment="Top" Width="245" Height="22"/>
-        <Label Content="Логин:" HorizontalAlignment="Left" Margin="57,82,0,0" VerticalAlignment="Top" Height="29" Width="54" FontSize="14"/>
-        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="57,145,0,0" VerticalAlignment="Top" Height="29" Width="63" FontSize="14"/>
-        <Button Content="Войти" HorizontalAlignment="Left" Margin="118,211,0,0" VerticalAlignment="Top" Height="22" Width="132" Click="LoginButton_Click"/>
-        <Label Content="Нету аккаунта?" HorizontalAlignment="Left" Margin="103,240,0,0" VerticalAlignment="Top" FontSize="9" RenderTransformOrigin="0.355,0.666"/>
-        <TextBlock HorizontalAlignment="Left" Margin="171,244,0,0" VerticalAlignment="Top" FontSize="9">
+    <Grid Margin="27,0,0,34">
+        <TextBox Name="usernameTextBox" HorizontalAlignment="Left" Margin="291,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Height="22"/>
+        <Label Content="Добро пожаловать" HorizontalAlignment="Left" Margin="325,41,0,0" VerticalAlignment="Top" Height="40" Width="193" FontSize="20"/>
+        <PasswordBox Name="passwordTextBox" HorizontalAlignment="Left" Margin="291,200,0,0" VerticalAlignment="Top" Width="245" Height="22"/>
+        <Label Content="Логин:" HorizontalAlignment="Left" Margin="288,108,0,0" VerticalAlignment="Top" Height="29" Width="54" FontSize="14"/>
+        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="288,171,0,0" VerticalAlignment="Top" Height="29" Width="63" FontSize="14"/>
+        <Button Content="Войти" HorizontalAlignment="Left" Margin="349,237,0,0" VerticalAlignment="Top" Height="22" Width="132" Click="LoginButton_Click"/>
+        <Label Content="Нету аккаунта?" HorizontalAlignment="Left" Margin="334,266,0,0" VerticalAlignment="Top" FontSize="9" RenderTransformOrigin="0.355,0.666"/>
+        <TextBlock HorizontalAlignment="Left" Margin="402,270,0,0" VerticalAlignment="Top" FontSize="9">
             <Hyperlink Click="Hyperlink_Click" Foreground="Blue" Cursor="Hand">
                 <Run Text="Зарегистрируйтесь"/>
             </Hyperlink>
         </TextBlock>
+        <Image Margin="-13,36,289,-11" Source="/imgonline-com-ua-Shape-mvhpl7pgK320Ta.png" Stretch="Fill"/>
     </Grid>
 </Window>

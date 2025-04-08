@@ -35,7 +35,7 @@
         <Image Margin="1341,1,0,0" Source="/icons8-оформить-заказ-100.png" Stretch="Fill" 
                HorizontalAlignment="Left" VerticalAlignment="Top" Width="131" Height="110" 
                MouseDown="CartImage_MouseDown"/>
-        <Button Content="Подарочные карты" HorizontalAlignment="Left" Margin="877,32,0,0" VerticalAlignment="Top" Height="48" Width="201"/>
-        <Button Content="Наши услуги" HorizontalAlignment="Left" Margin="649,32,0,0" VerticalAlignment="Top" Height="48" Width="201"/>
+        <Button Content="Персональные данные" HorizontalAlignment="Left" Margin="877,32,0,0" VerticalAlignment="Top" Height="48" Width="201" Click="MeasurementButton_Click"/>
+        <Button Content="Наши услуги" HorizontalAlignment="Left" Margin="649,32,0,0" VerticalAlignment="Top" Height="48" Width="201" Click="PromoButton_Click"/>
     </Grid>
 </Window>

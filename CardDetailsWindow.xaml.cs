@@ -63,14 +63,14 @@ namespace Atelie
             }
         }
 
-        // Форматируем номер карты, добавляя пробелы каждые 4 цифры
+       
         private string FormatCardNumber(string cardNumber)
         {
             return string.Join(" ", cardNumber.ToCharArray()
                 .Select((c, i) => i % 4 == 0 && i != 0 ? " " + c : c.ToString()));
         }
 
-        // Метод для включения или отключения редактирования полей
+      
         private void SetFieldsReadOnly(bool isReadOnly)
         {
             CardNumberTextBox.IsReadOnly = isReadOnly;
@@ -78,20 +78,19 @@ namespace Atelie
             CardHolderNameTextBox.IsReadOnly = isReadOnly;
         }
 
-        // Сохранение/отвязка карты
+       
         private void SaveCardDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            string cardNumber = CardNumberTextBox.Text.Replace(" ", ""); // Убираем пробелы
+            string cardNumber = CardNumberTextBox.Text.Replace(" ", ""); 
             string expiryDate = ExpiryDateTextBox.Text;
             string cardHolderName = CardHolderNameTextBox.Text;
 
-            // Если карта уже привязана, отвязываем её
             if (isCardLinked)
             {
-                // Запрашиваем подтверждение у пользователя
+          
                 MessageBoxResult result = MessageBox.Show("Вы действительно хотите отвязать карту?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-                // Если пользователь подтвердил, выполняем отвязку
+        
                 if (result == MessageBoxResult.Yes)
                 {
                     try
@@ -116,7 +115,7 @@ namespace Atelie
             }
             else
             {
-                // Проверка валидности данных
+          
                 if (!Regex.IsMatch(cardNumber, @"^\d{16}$"))
                 {
                     MessageBox.Show("Номер карты должен состоять из 16 цифр.");
@@ -135,7 +134,7 @@ namespace Atelie
                     return;
                 }
 
-                // Если карта не привязана, сохраняем новые реквизиты
+             
                 try
                 {
                     using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -163,21 +162,20 @@ namespace Atelie
 
         private void CardNumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string text = CardNumberTextBox.Text.Replace(" ", ""); // Убираем все пробелы для обработки
+            string text = CardNumberTextBox.Text.Replace(" ", ""); 
             if (text.Length > 16)
             {
-                text = text.Substring(0, 16); // Ограничиваем длину до 16 цифр
+                text = text.Substring(0, 16); 
             }
 
-            // Форматируем номер карты: добавляем пробелы каждые 4 символа
             text = string.Join(" ", Regex.Matches(text, @"(\d{1,4})")
                 .Cast<Match>()
                 .Select(m => m.Value));
 
-            // Устанавливаем отформатированный текст
+
             CardNumberTextBox.Text = text;
 
-            // Устанавливаем курсор в конец
+
             CardNumberTextBox.SelectionStart = CardNumberTextBox.Text.Length;
         }
 
