@@ -231,11 +231,12 @@ namespace Atelie
 
             var price = new TextBlock
             {
-                Text = $"Цена: {Card.Price} ₽",
+                Text = $"Цена: {Card.Price} BYN",  
                 FontSize = 16,
                 FontWeight = FontWeights.Bold,
                 HorizontalAlignment = HorizontalAlignment.Center
             };
+
 
             var infoButton = new Button
             {
@@ -248,16 +249,6 @@ namespace Atelie
             };
 
             infoButton.Click += InfoButton_Click;
-
-            var editButton = new Button
-            {
-                Content = "Изменить",
-                Width = 120,
-                Height = 30,
-                Margin = new Thickness(5),
-                Background = new SolidColorBrush(Color.FromRgb(46, 204, 113)),
-                Foreground = Brushes.White
-            };
 
             var deleteButton = new Button
             {
@@ -275,7 +266,6 @@ namespace Atelie
             stackPanel.Children.Add(title);
             stackPanel.Children.Add(price);
             stackPanel.Children.Add(infoButton);
-            stackPanel.Children.Add(editButton);
             stackPanel.Children.Add(deleteButton);
 
             this.Content = stackPanel;

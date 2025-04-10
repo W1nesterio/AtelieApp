@@ -8,7 +8,6 @@ namespace Atelie
     public partial class EnterMaterial : Window
     {
         private const string connectionString = "server=localhost;user=root;password=root;database=Atelie;";
-        private string selectedImagePath = string.Empty;  // Хранение выбранного пути к изображению
 
         public EnterMaterial()
         {
@@ -23,7 +22,7 @@ namespace Atelie
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT MaterialName, ImagePath FROM Materials";  // Запрос для получения всех материалов
+                    string query = "SELECT MaterialName FROM Materials";  // Запрос для получения всех материалов
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -33,8 +32,7 @@ namespace Atelie
                     {
                         materials.Add(new Material
                         {
-                            MaterialName = reader.GetString("MaterialName"),
-                          
+                            MaterialName = reader.GetString("MaterialName")
                         });
                     }
 
@@ -47,24 +45,12 @@ namespace Atelie
             }
         }
 
-        // Обработчик для выбора изображения
-        private void SelectImageButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Открытие диалога выбора файла изображения
-            var openFileDialog = new Microsoft.Win32.OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-            if (openFileDialog.ShowDialog() == true)
-            {
-                selectedImagePath = openFileDialog.FileName;  // Сохраняем путь к изображению
-            }
-        }
-
         // Обработчик для добавления нового материала
         private void AddMaterialButton_Click(object sender, RoutedEventArgs e)
         {
             string materialName = MaterialNameTextBox.Text.Trim();
 
-            if (string.IsNullOrEmpty(materialName) || string.IsNullOrEmpty(selectedImagePath))
+            if (string.IsNullOrEmpty(materialName))
             {
                 MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -75,10 +61,9 @@ namespace Atelie
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "INSERT INTO Materials (MaterialName, ImagePath) VALUES (@MaterialName, @ImagePath)";
+                    string query = "INSERT INTO Materials (MaterialName) VALUES (@MaterialName)";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@MaterialName", materialName);
-                    cmd.Parameters.AddWithValue("@ImagePath", selectedImagePath);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -94,12 +79,10 @@ namespace Atelie
             }
         }
 
-
         // Класс для представления материала
         public class Material
         {
             public string MaterialName { get; set; }
-            public string ImagePath { get; set; }
         }
     }
 }

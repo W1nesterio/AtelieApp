@@ -14,11 +14,13 @@
             </Grid.ColumnDefinitions>
 
             <!-- Левая часть - список товаров в корзине -->
-            <ListView Name="CartListView" Margin="20,100,20,100" Grid.Column="0">
+            <ListView Name="CartListView" Margin="20,100,3,100" Grid.Column="0">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Title}" Width="200"/>
                         <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" Width="100"/>
+                        <GridViewColumn Header="Материал" DisplayMemberBinding="{Binding MaterialName}" Width="100"/>
+                        <GridViewColumn Header="Доп. информация" DisplayMemberBinding="{Binding SetName}" Width="200"/>
                         <GridViewColumn Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -46,29 +48,21 @@
                 <TextBlock Name="TaxAmountText" FontSize="18" Foreground="#2C3E50" Margin="0,0,0,10"/>
 
                 <TextBlock Text="Итог:" FontSize="18" FontWeight="Bold" Foreground="#2C3E50"/>
-                <TextBlock Name="FinalAmountText" FontSize="24" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,20"/>
+                <TextBlock Name="FinalAmountText" FontSize="20" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,20"/>
 
-                <!-- Сообщение, если карта не добавлена -->
-                <TextBlock Name="NoCardText" Text="Пожалуйста, добавьте карту." 
-                           FontSize="10" Foreground="#E74C3C" HorizontalAlignment="Center" Margin="0,20,0,10" Visibility="Collapsed"/>
-
+                <!-- Панель с данными карты -->
                 <StackPanel Name="CardDetailsPanel" Visibility="Collapsed">
-                    <TextBlock Text="Данные карты" FontSize="24" FontWeight="Bold" Foreground="#2C3E50" Margin="0,20,0,10"/>
-
-                    <TextBlock Text="Номер карты:" FontSize="18" Foreground="#2C3E50"/>
-                    <TextBlock Name="CardNumberText" FontSize="18" Foreground="#2C3E50" Margin="0,0,0,10"/>
-
-                    <TextBlock Text="Имя владельца:" FontSize="18" Foreground="#2C3E50"/>
-                    <TextBlock Name="CardHolderNameText" FontSize="18" Foreground="#2C3E50" Margin="0,0,0,10"/>
-
-                    <TextBlock Text="Срок действия:" FontSize="18" Foreground="#2C3E50"/>
-                    <TextBlock Name="ExpiryDateText" FontSize="18" Foreground="#2C3E50" Margin="0,0,0,20"/>
+                    <TextBlock Text="Карта для оплаты:" FontSize="18" Foreground="#2C3E50" Margin="0,0,0,10"/>
+                    <TextBlock Name="CardNumberText" FontSize="18" Foreground="#2C3E50"/>
+                    <TextBlock Name="CardHolderNameText" FontSize="18" Foreground="#2C3E50"/>
+                    <TextBlock Name="ExpiryDateText" FontSize="18" Foreground="#2C3E50"/>
                 </StackPanel>
-            </StackPanel>
 
-            <Button Content="Оформить заказ" HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                    Width="200" Height="50" Background="#27AE60" Foreground="White" BorderBrush="#2ECC71"
-                    BorderThickness="1" Margin="0,0,0,30" FontSize="18" Click="CheckoutButton_Click"/>
+                <TextBlock Name="NoCardText" Text="Вы не добавили карту для оформления заказа." FontSize="16" Foreground="#E74C3C" Visibility="Collapsed" />
+
+            </StackPanel>
+            <Button Content="Оформить заказ" Background="#3498DB" Foreground="White" BorderBrush="#2980B9" BorderThickness="1" 
+        Padding="10,5" Click="CheckoutButton_Click" RenderTransformOrigin="0.318,1.539" Margin="192,506,182,20"/>
         </Grid>
     </Grid>
 </Window>

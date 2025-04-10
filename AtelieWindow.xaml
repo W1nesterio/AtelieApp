@@ -15,13 +15,9 @@
 
         <!-- Поле для поиска -->
         <TextBox Name="SearchTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" 
-         Width="1026" Height="45" Margin="153,105,0,0" FontSize="16" 
-         Padding="10,0" VerticalContentAlignment="Center" 
-         TextChanged="SearchTextBox_TextChanged"/>
-
-        <!-- Изображение (картинка с костюмом) -->
-        <Image Margin="1,-6,0,0" Source="/icons8-костюм-100.png" Stretch="Fill" 
-               HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Height="123"/>
+                 Width="1026" Height="45" Margin="153,105,0,0" FontSize="16" 
+                 Padding="10,0" VerticalContentAlignment="Center" 
+                 TextChanged="SearchTextBox_TextChanged"/>
 
         <!-- ScrollViewer для прокрутки карточек -->
         <ScrollViewer Margin="69,180,50,50" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
@@ -33,9 +29,11 @@
                 VerticalAlignment="Top" Width="200" Height="45" Margin="1209,108,0,0" 
                 FontSize="16" Background="#27AE60" Foreground="White" BorderBrush="#2ECC71" 
                 BorderThickness="1" Click="AddCardButton_Click"/>
+
+        <!-- Кнопка для добавления материала -->
         <Button Name="AddMaterialButton" Content="Добавить материал" HorizontalAlignment="Left" 
-        VerticalAlignment="Top" Width="200" Height="45" Margin="1209,34,0,0" 
-        FontSize="16" Background="#27AE60" Foreground="White" BorderBrush="#2ECC71" 
-        BorderThickness="1" Click="AddMaterialButton_Click"/>
+                VerticalAlignment="Top" Width="200" Height="45" Margin="1209,34,0,0" 
+                FontSize="16" Background="#27AE60" Foreground="White" BorderBrush="#2ECC71" 
+                BorderThickness="1" Click="AddMaterialButton_Click"/>
     </Grid>
 </Window>

@@ -122,13 +122,14 @@ namespace Atelie
                     Margin = new Thickness(0, 10, 0, 5)
                 };
 
-                TextBlock priceBlock = new TextBlock
+                var price = new TextBlock
                 {
-                    Text = $"Цена: {card.Price:C}",
-                    FontSize = 14,
+                    Text = $"Цена: {card.Price} BYN",  
+                    FontSize = 16,
                     FontWeight = FontWeights.Bold,
-                    Margin = new Thickness(0, 10, 0, 10)
+                    HorizontalAlignment = HorizontalAlignment.Center
                 };
+
 
                 Button showDescriptionButton = new Button
                 {
@@ -162,7 +163,7 @@ namespace Atelie
 
                 cardPanel.Children.Add(cardImage);
                 cardPanel.Children.Add(titleBlock);
-                cardPanel.Children.Add(priceBlock);
+                cardPanel.Children.Add(price);
                 cardPanel.Children.Add(showDescriptionButton);
                 cardPanel.Children.Add(addToCartButton);
 
@@ -178,39 +179,40 @@ namespace Atelie
 
         private void AddToCart(Card card)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            SelectMaterialAndMeasurementsWindow selectWindow = new SelectMaterialAndMeasurementsWindow();
+            if (selectWindow.ShowDialog() == true)
             {
-                try
+                int materialId = selectWindow.SelectedMaterialId.Value;
+                int measurementId = selectWindow.SelectedMeasurementId.Value;
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    connection.Open();
-
-                    string checkQuery = "SELECT COUNT(*) FROM CartItems WHERE UserId = (SELECT id FROM user WHERE username = @username) AND CardId = @cardId";
-                    MySqlCommand checkCommand = new MySqlCommand(checkQuery, connection);
-                    checkCommand.Parameters.AddWithValue("@username", currentUsername);
-                    checkCommand.Parameters.AddWithValue("@cardId", card.CardId);
-                    long count = (long)checkCommand.ExecuteScalar();
-
-                    if (count > 0)
+                    try
                     {
-                        MessageBox.Show("Этот товар уже в корзине!", "Корзина", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    else
-                    {
-                        string insertQuery = "INSERT INTO CartItems (UserId, CardId) VALUES ((SELECT id FROM user WHERE username = @username), @cardId)";
-                        MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
-                        insertCommand.Parameters.AddWithValue("@username", currentUsername);
-                        insertCommand.Parameters.AddWithValue("@cardId", card.CardId);
-                        insertCommand.ExecuteNonQuery();
+                        connection.Open();
 
-                        MessageBox.Show($"Карточка '{card.Title}' добавлена в корзину!", "Корзина", MessageBoxButton.OK, MessageBoxImage.Information);
+                        // Используем правильное поле MeasurementId
+                        string insertQuery = @"
+                    INSERT INTO CartItems (UserId, CardId, MaterialId, MeasurementId)
+                    VALUES ((SELECT id FROM user WHERE username = @username), @cardId, @materialId, @measurementId)";
+                        MySqlCommand command = new MySqlCommand(insertQuery, connection);
+                        command.Parameters.AddWithValue("@username", currentUsername);
+                        command.Parameters.AddWithValue("@cardId", card.CardId);
+                        command.Parameters.AddWithValue("@materialId", materialId);
+                        command.Parameters.AddWithValue("@measurementId", measurementId);
+                        command.ExecuteNonQuery();
+
+                        MessageBox.Show("Товар добавлен в корзину с выбранным материалом и мерками!");
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ошибка при добавлении в корзину: " + ex.Message);
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка при добавлении в корзину: " + ex.Message);
+                    }
                 }
             }
         }
+
+
 
         private void CartImage_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
