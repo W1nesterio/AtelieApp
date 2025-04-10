@@ -5,9 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Atelie"
         mc:Ignorable="d"
-        Title="CreatePromo" Height="450" Width="800"
-        WindowStartupLocation="CenterOwner">
-    <Grid>
-        
+        Title="Создание замеров" Height="520" Width="820"
+        WindowStartupLocation="CenterOwner"
+        Background="#FAFAFA">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Ввод данных -->
+        <Border Grid.Row="0" Padding="15" Background="White" CornerRadius="10" BorderBrush="#DDD" BorderThickness="1" Margin="0 0 0 10">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Введите мерки клиента" FontSize="22" FontWeight="Bold" Margin="0 0 0 10"/>
+
+                <StackPanel Margin="0 0 0 10">
+                    <TextBlock Text="Название набора" />
+                    <TextBox x:Name="SetNameBox" Margin="0 5" />
+                </StackPanel>
+
+                <UniformGrid Columns="3" Margin="0 0 0 10">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Обхват талии"/>
+                        <TextBox x:Name="WaistBox" Margin="0 5"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Обхват груди"/>
+                        <TextBox x:Name="ChestBox" Margin="0 5"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Обхват бедер"/>
+                        <TextBox x:Name="HipsBox" Margin="0 5"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Ширина плеч"/>
+                        <TextBox x:Name="ShouldersBox" Margin="0 5"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Обхват шеи"/>
+                        <TextBox x:Name="NeckBox" Margin="0 5"/>
+                    </StackPanel>
+                </UniformGrid>
+
+                <Button Content="Добавить" Width="140" Height="40" Background="#4CAF50" Foreground="White"
+                        FontWeight="Bold" HorizontalAlignment="Left" Click="AddButton_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Таблица сохранённых данных -->
+        <DataGrid x:Name="DataGridMeasurements" Grid.Row="1" AutoGenerateColumns="True" IsReadOnly="True"
+                  Background="White" BorderBrush="#DDD" BorderThickness="1" />
     </Grid>
 </Window>

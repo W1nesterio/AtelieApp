@@ -6,23 +6,42 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Atelie
 {
     public partial class AtelieWindowForUsers : Window
     {
         private string connectionString = "Server=localhost;Database=Atelie;User ID=root;Password=root;";
-        private string currentUsername; // Глобальная переменная для хранения имени текущего пользователя
+        private string currentUsername;
+        private DispatcherTimer searchTimer;
 
-        public AtelieWindowForUsers(string username) // Конструктор для инициализации имени пользователя
+        public AtelieWindowForUsers(string username)
         {
             InitializeComponent();
-            currentUsername = username; // Сохраняем имя пользователя
+            currentUsername = username;
+
+            // Инициализация таймера для задержки поиска
+            searchTimer = new DispatcherTimer();
+            searchTimer.Interval = TimeSpan.FromMilliseconds(500);
+            searchTimer.Tick += SearchTimer_Tick;
+
             LoadCards();
         }
 
-        // Метод для загрузки карточек из базы данных
-        private void LoadCards()
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            searchTimer.Stop();
+            searchTimer.Start();
+        }
+
+        private void SearchTimer_Tick(object sender, EventArgs e)
+        {
+            searchTimer.Stop();
+            LoadCards(SearchTextBox.Text.Trim());
+        }
+
+        private void LoadCards(string searchText = "")
         {
             List<Card> cards = new List<Card>();
 
@@ -31,8 +50,10 @@ namespace Atelie
                 try
                 {
                     connection.Open();
-                    string query = "SELECT CardId, Title, Price, Description, ImagePath FROM Cards";
+                    string query = "SELECT CardId, Title, Price, Description, ImagePath FROM Cards WHERE Title LIKE @search";
                     MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@search", $"%{searchText}%");
+
                     MySqlDataReader reader = command.ExecuteReader();
 
                     while (reader.Read())
@@ -50,28 +71,42 @@ namespace Atelie
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error loading data: " + ex.Message);
+                    MessageBox.Show("Ошибка при загрузке данных: " + ex.Message);
                 }
             }
 
-            // Отображение карточек в интерфейсе
-            DisplayCards(cards);
+            CardsWrapPanel.Children.Clear();
+
+            if (cards.Count == 0)
+            {
+                TextBlock noResults = new TextBlock
+                {
+                    Text = "Ничего не найдено по данному запросу.",
+                    FontSize = 16,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.Gray,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    Margin = new Thickness(20)
+                };
+                CardsWrapPanel.Children.Add(noResults);
+            }
+            else
+            {
+                DisplayCards(cards);
+            }
         }
 
-        // Метод для отображения карточек в WrapPanel
         private void DisplayCards(List<Card> cards)
         {
             foreach (var card in cards)
             {
-                // Создаем элемент карточки
                 StackPanel cardPanel = new StackPanel
                 {
                     Orientation = Orientation.Vertical,
                     Width = 250,
-                    Margin = new System.Windows.Thickness(10)
+                    Margin = new Thickness(10)
                 };
 
-                // Изображение
                 Image cardImage = new Image
                 {
                     Source = new BitmapImage(new Uri(card.ImagePath ?? "/default_image.png", UriKind.RelativeOrAbsolute)),
@@ -79,77 +114,68 @@ namespace Atelie
                     Height = 150
                 };
 
-                // Заголовок карточки
                 TextBlock titleBlock = new TextBlock
                 {
                     Text = card.Title,
                     FontSize = 16,
                     FontWeight = FontWeights.Bold,
-                    Margin = new System.Windows.Thickness(0, 10, 0, 5)
+                    Margin = new Thickness(0, 10, 0, 5)
                 };
 
-                // Цена карточки
                 TextBlock priceBlock = new TextBlock
                 {
                     Text = $"Цена: {card.Price:C}",
                     FontSize = 14,
                     FontWeight = FontWeights.Bold,
-                    Margin = new System.Windows.Thickness(0, 10, 0, 10)
+                    Margin = new Thickness(0, 10, 0, 10)
                 };
 
-                // Кнопка для отображения описания
                 Button showDescriptionButton = new Button
                 {
                     Content = "Показать описание",
                     Width = 200,
-                    Margin = new System.Windows.Thickness(0, 5, 0, 5),
+                    Margin = new Thickness(0, 5, 0, 5),
                     HorizontalAlignment = HorizontalAlignment.Center,
                     Background = new SolidColorBrush(Color.FromRgb(52, 152, 219)),
                     Foreground = Brushes.White,
                     BorderBrush = Brushes.Transparent,
-                    BorderThickness = new System.Windows.Thickness(1),
-                    Padding = new System.Windows.Thickness(10),
+                    BorderThickness = new Thickness(1),
+                    Padding = new Thickness(10),
                     FontWeight = FontWeights.Bold
                 };
                 showDescriptionButton.Click += (sender, e) => ShowDescriptionWindow(card.Description);
 
-                // Кнопка для добавления в корзину
                 Button addToCartButton = new Button
                 {
                     Content = "Добавить в корзину",
                     Width = 200,
-                    Margin = new System.Windows.Thickness(0, 5, 0, 5),
+                    Margin = new Thickness(0, 5, 0, 5),
                     HorizontalAlignment = HorizontalAlignment.Center,
                     Background = new SolidColorBrush(Color.FromRgb(46, 204, 113)),
                     Foreground = Brushes.White,
                     BorderBrush = Brushes.Transparent,
-                    BorderThickness = new System.Windows.Thickness(1),
-                    Padding = new System.Windows.Thickness(10),
+                    BorderThickness = new Thickness(1),
+                    Padding = new Thickness(10),
                     FontWeight = FontWeights.Bold
                 };
                 addToCartButton.Click += (sender, e) => AddToCart(card);
 
-                // Добавляем элементы в карточку
                 cardPanel.Children.Add(cardImage);
                 cardPanel.Children.Add(titleBlock);
                 cardPanel.Children.Add(priceBlock);
                 cardPanel.Children.Add(showDescriptionButton);
                 cardPanel.Children.Add(addToCartButton);
 
-                // Добавляем карточку в WrapPanel
                 CardsWrapPanel.Children.Add(cardPanel);
             }
         }
 
-        // Метод для отображения описания в отдельном окне
         private void ShowDescriptionWindow(string description)
         {
             DescriptionWindow descriptionWindow = new DescriptionWindow(description);
             descriptionWindow.Show();
         }
 
-        // Метод для добавления карточки в корзину
-        // Метод для добавления товара в корзину
         private void AddToCart(Card card)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -158,10 +184,9 @@ namespace Atelie
                 {
                     connection.Open();
 
-                    // Проверка, существует ли уже этот товар в корзине
                     string checkQuery = "SELECT COUNT(*) FROM CartItems WHERE UserId = (SELECT id FROM user WHERE username = @username) AND CardId = @cardId";
                     MySqlCommand checkCommand = new MySqlCommand(checkQuery, connection);
-                    checkCommand.Parameters.AddWithValue("@username", currentUsername); // Используем текущего пользователя
+                    checkCommand.Parameters.AddWithValue("@username", currentUsername);
                     checkCommand.Parameters.AddWithValue("@cardId", card.CardId);
                     long count = (long)checkCommand.ExecuteScalar();
 
@@ -171,10 +196,9 @@ namespace Atelie
                     }
                     else
                     {
-                        // Добавление товара в корзину
                         string insertQuery = "INSERT INTO CartItems (UserId, CardId) VALUES ((SELECT id FROM user WHERE username = @username), @cardId)";
                         MySqlCommand insertCommand = new MySqlCommand(insertQuery, connection);
-                        insertCommand.Parameters.AddWithValue("@username", currentUsername); // Используем текущего пользователя
+                        insertCommand.Parameters.AddWithValue("@username", currentUsername);
                         insertCommand.Parameters.AddWithValue("@cardId", card.CardId);
                         insertCommand.ExecuteNonQuery();
 
@@ -188,15 +212,12 @@ namespace Atelie
             }
         }
 
-
-        // Обработчик для перехода на CartWindow при нажатии на корзину
         private void CartImage_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             CartWindow cartWindow = new CartWindow(currentUsername);
             cartWindow.Show();
         }
 
-        // Класс карточки
         public class Card
         {
             public int CardId { get; set; }
@@ -206,7 +227,6 @@ namespace Atelie
             public string ImagePath { get; set; }
         }
 
-        // Окно для отображения описания
         public class DescriptionWindow : Window
         {
             public DescriptionWindow(string description)
@@ -215,14 +235,14 @@ namespace Atelie
                 Width = 400;
                 Height = 300;
                 WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                WindowStyle = WindowStyle.None; // Убираем стандартные элементы окна
+                WindowStyle = WindowStyle.None;
                 Background = Brushes.White;
 
                 TextBlock descriptionText = new TextBlock
                 {
                     Text = description,
                     FontSize = 14,
-                    Margin = new System.Windows.Thickness(20),
+                    Margin = new Thickness(20),
                     TextWrapping = TextWrapping.Wrap
                 };
 
@@ -246,11 +266,13 @@ namespace Atelie
                 Content = panel;
             }
         }
+
         private void ViewCardDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            CardDetailsWindow cardDetailsWindow = new CardDetailsWindow(currentUsername); 
+            CardDetailsWindow cardDetailsWindow = new CardDetailsWindow(currentUsername);
             cardDetailsWindow.Show();
         }
+
         private void PromoButton_Click(object sender, RoutedEventArgs e)
         {
             MeasurementWindow measurementWindow = new MeasurementWindow();

@@ -15,8 +15,10 @@
 
         <!-- Поле для поиска (без обработчика события TextChanged) -->
         <TextBox Name="SearchTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                 Width="1289" Height="45" Margin="153,105,0,0" FontSize="16" 
-                 Padding="10,0" VerticalContentAlignment="Center"/>
+         Width="1289" Height="45" Margin="153,105,0,0" FontSize="16" 
+         Padding="10,0" VerticalContentAlignment="Center"
+         TextChanged="SearchTextBox_TextChanged"/>
+
 
         <!-- Изображение (картинка с костюмом) -->
         <Image Margin="1,-6,0,0" Source="/icons8-костюм-100.png" Stretch="Fill" 
