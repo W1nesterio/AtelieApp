@@ -44,13 +44,9 @@ namespace Atelie
         // Метод для обработки добавления карточки
         private void CreateCardWindow_CardAdded(object sender, Card newCard)
         {
-            // Добавляем карточку в список
-            cards.Add(newCard);
-
-            // Создаем элемент карточки для отображения
-            var cardControl = new CardControl(newCard, DeleteCard);
-            CardsWrapPanel.Children.Add(cardControl); // Добавляем карточку в интерфейс
+            LoadCards(); // Просто перезагружаем карточки из БД, включая только что добавленную
         }
+
 
         // Метод для загрузки карточек из базы данных с фильтрацией по названию
         private void LoadCards(string searchQuery = "")

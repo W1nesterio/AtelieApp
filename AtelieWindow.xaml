@@ -35,5 +35,7 @@
                 VerticalAlignment="Top" Width="200" Height="45" Margin="1209,34,0,0" 
                 FontSize="16" Background="#27AE60" Foreground="White" BorderBrush="#2ECC71" 
                 BorderThickness="1" Click="AddMaterialButton_Click"/>
+        <Image Margin="1,-6,0,0" Source="/icons8-костюм-100.png" Stretch="Fill" 
+            HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Height="123"/>
     </Grid>
 </Window>
